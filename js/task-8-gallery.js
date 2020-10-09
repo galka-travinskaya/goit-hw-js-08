@@ -69,6 +69,7 @@ function onImageClick(event) {
 function onOpenModal(evt) {
   const activeImg = document.querySelector('is-open');
   refs.modalImg.src = evt.target.dataset.source;
+  refs.modalImg.alt = evt.target.alt;
   if(activeImg) {
     refs.modal.classList.remove('is-open');
   }
@@ -80,6 +81,7 @@ function onCloseModal(evt) {
   window.removeEventListener('keydown', onEscKeyPress);
   refs.modal.classList.remove("is-open");
   refs.modalImg.src = "";
+  refs.modalImg.alt = "";
 }
 
 function onEscKeyPress(evt) {

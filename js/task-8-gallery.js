@@ -1,13 +1,17 @@
 import elements from './gallery-items.js';
 
-const galleryList = document.querySelector('ul.js-gallery');
-const modalWindow = document.querySelector('.lightbox');
+const refs = {
+  galleryContainer: document.querySelector('ul.js-gallery'),
+  modal: document.querySelector('.js-lightbox'),
+  modalOverlay: document.querySelector('.lightbox__overlay'),
+  modalImg: document.querySelector('.lightbox__image'),
+  modalBtn: document.querySelector('[data-action="close-lightbox"]'),
+};
 
 const imagesCards = createImageCards(elements);
 
-galleryList.insertAdjacentHTML('beforeend', imagesCards);
-
-galleryList.addEventListener('click', onGalleryListClick);
+refs.galleryContainer.insertAdjacentHTML('beforeend', imagesCards);
+refs.galleryContainer.addEventListener('click', onGalleryListClick);
 
 console.log(createImageCards(elements));
 
@@ -32,12 +36,10 @@ function createImageCards(elements) {
 }
 
 function onGalleryListClick(evt) {
-  modalWindow.classList.add('is-open');
+  refs.modal.classList.add('is-open');
   const openImg = evt.target.dataset.source;
   if(!openImg) {
     return;
   }
-
-
     console.log(evt.target);
 }
